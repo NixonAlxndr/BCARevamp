@@ -60,13 +60,13 @@ const Home = () => {
         >
           <h1 className="text-3xl text-center font-bold">Masuk Sebagai</h1>
           <div className="flex justify-between w-[60%] mx-auto my-7">
-            <div className="bisnis cursor-pointer" onClick={() => navigate("/login/bisnis")}>
+            <div className="bisnis cursor-pointer" onClick={() => navigate("login/bisnis")}>
               <div className="img w-[17em] h-[10em] my-2">
                 <img src={GroupPP} alt="" className="w-full h-full" />
               </div>
               <p className="text-[1.4rem] text-black font-semibold">Bisnis</p>
             </div>
-            <div className="individual cursor-pointer" onClick={() => navigate("/login/individu")}>
+            <div className="individual cursor-pointer" onClick={() => navigate("login/individu")}>
               <div className="img w-[8em] h-[10em] my-2">
                 <img src={IndividualPP} alt="" className="w-full h-full" />
               </div>
