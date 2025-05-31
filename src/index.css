@@ -63,6 +63,19 @@
     margin-block: 5px;
 }
 
+/* Bullet */
+.bullet-active{
+    position: relative;
+}
+
+.bullet-active::after{
+    content: '';
+    position: absolute;
+    border-radius: 100%;
+    inset: 3px;
+    background-color: var(--color);
+}
+
 /* Input Text */
 .input-text{
     outline: none;

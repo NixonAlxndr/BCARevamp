@@ -1,15 +1,62 @@
 import { useEffect, useRef, useState } from "react"
 import HeroImg1 from "../assets/Hero-img-1.jpg"
-import GroupPP from "../assets/Group-PP.png"
-import IndividualPP from "../assets/Individual-PP.png"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { useNavigate } from "react-router"
+import { kurs } from "../Data/kurs.ts"
+import PrimaryButton from "../Components/PrimaryButton.tsx"
+
+const RenderTable = () => {
+  return (
+    <div className="max-w-6xl mx-auto p-4 rounded-xl overflow-auto">
+      <table className="min-w-full border-collapse border border-gray-300 rounded-xl overflow-hidden shadow-md">
+        <thead>
+          <tr className="bg-primary text-white text-sm">
+            <th className="p-3 text-left align-bottom" rowSpan={2}>Mata Uang</th>
+            <th className="p-2 text-center" colSpan={2}>
+              e-Rate <br /><span className="text-xs font-normal">31 Mei 2025 / 16.10 WIB</span>
+            </th>
+            <th className="p-2 text-center" colSpan={2}>
+              TT Counter <br /><span className="text-xs font-normal">28 Mei 2025 / 17.48 WIB</span>
+            </th>
+            <th className="p-2 text-center" colSpan={2}>
+              Bank Notes <br /><span className="text-xs font-normal">28 Mei 2025 / 08.12 WIB</span>
+            </th>
+          </tr>
+          <tr className="bg-primary text-white text-sm">
+            <th className="p-2 text-center">Beli</th>
+            <th className="p-2 text-center">Jual</th>
+            <th className="p-2 text-center">Beli</th>
+            <th className="p-2 text-center">Jual</th>
+            <th className="p-2 text-center">Beli</th>
+            <th className="p-2 text-center">Jual</th>
+          </tr>
+        </thead>
+        <tbody className="text-sm">
+          {
+            kurs.map((item, index) => (
+              <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}>
+                <td className="p-3 font-medium whitespace-nowrap">{item.nama}</td>
+                <td className="text-center">{item["e-rate"].beli.toLocaleString("id-ID", { minimumFractionDigits: 2 })}</td>
+                <td className="text-center">{item["e-rate"].jual.toLocaleString("id-ID", { minimumFractionDigits: 2 })}</td>
+                <td className="text-center">{item["tt-counter"].beli.toLocaleString("id-ID", { minimumFractionDigits: 2 })}</td>
+                <td className="text-center">{item["tt-counter"].jual.toLocaleString("id-ID", { minimumFractionDigits: 2 })}</td>
+                <td className="text-center">{item["bank-notes"].beli === 0 ? "0,00" : item["bank-notes"].beli.toLocaleString("id-ID", { minimumFractionDigits: 2 })}</td>
+                <td className="text-center">{item["bank-notes"].jual === 0 ? "0,00" : item["bank-notes"].jual.toLocaleString("id-ID", { minimumFractionDigits: 2 })}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  )
+}
 
 const Home = () => {
   const [popUp, setPopUp] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
+  const [ type, setType ] = useState<"Individual" | "Bisnis" | null>(null);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -56,23 +103,49 @@ const Home = () => {
       {isVisible && (
         <div
           ref={popupRef}
-          className="popup fixed z-10 left-0 bottom-0 right-0 bg-primary py-4 text-white"
+          className="popup fixed z-10 left-0 bottom-0 right-0 border-t-2 border-black bg-white py-4"
         >
-          <h1 className="text-3xl text-center font-bold">Masuk Sebagai</h1>
-          <div className="flex justify-between w-[60%] mx-auto my-7">
-            <div className="bisnis cursor-pointer" onClick={() => navigate("login/bisnis")}>
-              <div className="img w-[17em] h-[10em] my-2">
-                <img src={GroupPP} alt="" className="w-full h-full" />
+          <h1 className="text-2xl text-center font-bold">Daftar Rekening Sekarang, Gratis</h1>
+          <p className="text-center text-gray-600">Mulai dengan memilih jenis rekening</p>
+          <div className="flex justify-between w-[70%] mx-auto my-7">
+
+            <div className="bisnis w-1/2">
+              <div className="flex cursor-pointer gap-2 items-center" onClick={() => setType("Bisnis")}>
+                <div 
+                  className={`bullet ${type === "Bisnis" ? "bullet-active" : ""} rounded-full border-2 w-5 h-5 border-red-500`}
+                  style={{"--color" : "red"} as React.CSSProperties}  
+                ></div>
+                <p className="font-bold text-red-500 text-2xl">Rekening Bisnis</p>
               </div>
-              <p className="text-[1.4rem] text-black font-semibold">Bisnis</p>
+              <div className="list ml-12">
+                <ul>
+                  <li className="list-disc">Berlaku untuk bisnis dan penjualan biasa</li>
+                  <li className="list-disc">Mengirim dan menerima pembayaran secara global</li>
+                  <li className="list-disc">Tanpa biaya konfigurasi atau biaya bulanan</li>
+                  <li className="list-disc">Perlindungan penjual untuk penjualan yang memenuhi syarat</li>
+                </ul>
+              </div>
             </div>
-            <div className="individual cursor-pointer" onClick={() => navigate("login/individu")}>
-              <div className="img w-[8em] h-[10em] my-2">
-                <img src={IndividualPP} alt="" className="w-full h-full" />
+
+            <div className="individual w-1/2">
+              <div className="flex cursor-pointer gap-2 items-center" onClick={() => setType("Individual")}>
+                <div 
+                  className={`bullet ${type === "Individual" ? "bullet-active" : ""} rounded-full border-2 w-5 h-5 border-primary`}
+                  style={{"--color" : "var(--color-primary)"} as React.CSSProperties}
+                ></div>
+                <p className="font-bold text-primary text-2xl">Rekening Pribadi</p>
               </div>
-              <p className="text-[1.4rem] text-black font-semibold">Individual</p>
+              <div className="list ml-12">
+                <ul>
+                  <li className="list-disc">Bayar secara daring ke jutaan pedagang nasional</li>
+                  <li className="list-disc">Berbelanja dengan penuh percaya diri dengan perlindungan pembeli pada transaksi yang memenuhi syarat</li>
+                </ul>
+              </div>
             </div>
           </div>
+
+          <PrimaryButton text="Berikutnya" onClick={() => navigate(`login/${type}`)} classExtend="bg-primary w-[10%] hover:bg-secondary justify-self-center rounded-[50px]" />
+
         </div>
       )}
 
@@ -98,9 +171,9 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="flex justify-between items-center mt-[8em]">
-        <div className="img h-[35%] w-[35%]">
-          <img src={HeroImg1} alt="" className="w-full h-full" />
+      <div className="flex justify-between mt-[8em]">
+        <div className="table h-[45%] w-[45%]">
+          <RenderTable />
         </div>
 
         <div className="text w-[50%]">
