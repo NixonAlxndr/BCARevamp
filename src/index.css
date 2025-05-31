@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme{
+    --breakpoint-laptop: 768px;
+    --breakpoint-tablet: 500px;
+
+    --color-primary: #1473e6;
+    --color-secondary: #0066AE;
+    --color-primary-black: #031120;
+
+}
+
+/* List Animation */
+.list-anim{
+    position: relative;
+    cursor: pointer;
+}
+
+.list-anim::after{
+    position: absolute;
+    width: 100%;
+    scale: 0;
+    height: 2px;
+    background-color: var(--color);
+    bottom: -2px;
+    left: 0;
+    transition: all .2s ease-in-out;
+    content: '';
+}
+
+.list-anim:hover::after{
+    scale: 1;
+}
+
+/* Button Style */
+.primary-button{
+    border: 1px solid var(--color-primary);
+    padding: 5px 30px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    background: var(--color-primary);
+}
+
+.primary-button:hover{
+    background-color: var(--color-secondary);
+}
+
+.secondary-button{
+    border: 1px solid var(--color-primary);
+    padding: 8px 20px;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 3em;
+    cursor: pointer;
+}
+
+/* Input Box */
+.input-box{
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px 12px;
+    margin-block: 5px;
+}
+
+/* Input Text */
+.input-text{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 1.1rem;
+    border-bottom: 2px solid white;
+}
+
+/* Global CSS */
+.ease-anim{
+    transition: all .3s ease-in-out;
+}
