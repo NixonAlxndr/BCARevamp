@@ -8,7 +8,7 @@ import Login from "./Pages/Login";
 
 let router = createBrowserRouter([
   {
-    path: "/",
+    path: "/BCARevamp",
     Component: DefaultLayout,
     children: [
       {
