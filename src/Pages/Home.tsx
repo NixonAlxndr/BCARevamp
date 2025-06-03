@@ -1,17 +1,18 @@
 import { useEffect, useRef, useState } from "react"
-import HeroImg1 from "../assets/Hero-img-1.jpg"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { useNavigate } from "react-router"
 import { kurs } from "../Data/kurs.ts"
 import PrimaryButton from "../Components/PrimaryButton.tsx"
+import SecondaryButton from "@/Components/SecondaryButton.tsx"
+import Banner from "../assets/Banner.png"
 
 const RenderTable = () => {
   return (
-    <div className="max-w-6xl mx-auto p-4 rounded-xl overflow-auto">
+    <div className="max-w-6xl mx-auto rounded-xl overflow-auto">
       <table className="min-w-full border-collapse border border-gray-300 rounded-xl overflow-hidden shadow-md">
         <thead>
-          <tr className="bg-primary text-white text-sm">
+          <tr className="bg-primary-blue text-white text-sm">
             <th className="p-3 text-left align-bottom" rowSpan={2}>Mata Uang</th>
             <th className="p-2 text-center" colSpan={2}>
               e-Rate <br /><span className="text-xs font-normal">31 Mei 2025 / 16.10 WIB</span>
@@ -23,7 +24,7 @@ const RenderTable = () => {
               Bank Notes <br /><span className="text-xs font-normal">28 Mei 2025 / 08.12 WIB</span>
             </th>
           </tr>
-          <tr className="bg-primary text-white text-sm">
+          <tr className="bg-primary-blue text-white text-sm">
             <th className="p-2 text-center">Beli</th>
             <th className="p-2 text-center">Jual</th>
             <th className="p-2 text-center">Beli</th>
@@ -36,13 +37,13 @@ const RenderTable = () => {
           {
             kurs.map((item, index) => (
               <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}>
-                <td className="p-3 font-medium whitespace-nowrap">{item.nama}</td>
-                <td className="text-center">{item["e-rate"].beli.toLocaleString("id-ID", { minimumFractionDigits: 2 })}</td>
-                <td className="text-center">{item["e-rate"].jual.toLocaleString("id-ID", { minimumFractionDigits: 2 })}</td>
-                <td className="text-center">{item["tt-counter"].beli.toLocaleString("id-ID", { minimumFractionDigits: 2 })}</td>
-                <td className="text-center">{item["tt-counter"].jual.toLocaleString("id-ID", { minimumFractionDigits: 2 })}</td>
-                <td className="text-center">{item["bank-notes"].beli === 0 ? "0,00" : item["bank-notes"].beli.toLocaleString("id-ID", { minimumFractionDigits: 2 })}</td>
-                <td className="text-center">{item["bank-notes"].jual === 0 ? "0,00" : item["bank-notes"].jual.toLocaleString("id-ID", { minimumFractionDigits: 2 })}</td>
+                <td className="p-3 font-medium whitespace-nowrap flex gap-1.5 items-center"><span><img src={item.gambar} alt="" /></span>{item.nama}</td>
+                <td className="text-center">{item["e-rate"].beli}</td>
+                <td className="text-center">{item["e-rate"].jual}</td>
+                <td className="text-center">{item["tt-counter"].beli}</td>
+                <td className="text-center">{item["tt-counter"].jual}</td>
+                <td className="text-center">{item["bank-notes"].beli === 0 ? "0,00" : item["bank-notes"].beli}</td>
+                <td className="text-center">{item["bank-notes"].jual === 0 ? "0,00" : item["bank-notes"].jual}</td>
               </tr>
             ))
           }
@@ -56,7 +57,7 @@ const Home = () => {
   const [popUp, setPopUp] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
-  const [ type, setType ] = useState<"Individual" | "Bisnis" | null>(null);
+  const [type, setType] = useState<"Individual" | "Bisnis" | null>("Bisnis");
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -99,21 +100,21 @@ const Home = () => {
   }, [isVisible]);
 
   return (
-    <div className="max-w-[1440px] mx-auto my-20 px-4">
+    <div className=" mb-20">
       {isVisible && (
         <div
           ref={popupRef}
           className="popup fixed z-10 left-0 bottom-0 right-0 border-t-2 border-black bg-white py-4"
         >
-          <h1 className="text-2xl text-center font-bold">Daftar Rekening Sekarang, Gratis</h1>
+          <h1 className="text-2xl text-center font-bold">Masuk Rekening Sekarang, Gratis</h1>
           <p className="text-center text-gray-600">Mulai dengan memilih jenis rekening</p>
           <div className="flex justify-between w-[70%] mx-auto my-7">
 
             <div className="bisnis w-1/2">
               <div className="flex cursor-pointer gap-2 items-center" onClick={() => setType("Bisnis")}>
-                <div 
+                <div
                   className={`bullet ${type === "Bisnis" ? "bullet-active" : ""} rounded-full border-2 w-5 h-5 border-red-500`}
-                  style={{"--color" : "red"} as React.CSSProperties}  
+                  style={{ "--color": "red" } as React.CSSProperties}
                 ></div>
                 <p className="font-bold text-red-500 text-2xl">Rekening Bisnis</p>
               </div>
@@ -129,11 +130,11 @@ const Home = () => {
 
             <div className="individual w-1/2">
               <div className="flex cursor-pointer gap-2 items-center" onClick={() => setType("Individual")}>
-                <div 
-                  className={`bullet ${type === "Individual" ? "bullet-active" : ""} rounded-full border-2 w-5 h-5 border-primary`}
-                  style={{"--color" : "var(--color-primary)"} as React.CSSProperties}
+                <div
+                  className={`bullet ${type === "Individual" ? "bullet-active" : ""} rounded-full border-2 w-5 h-5 border-primary-blue`}
+                  style={{ "--color": "var(--color-primary-blue)" } as React.CSSProperties}
                 ></div>
-                <p className="font-bold text-primary text-2xl">Rekening Pribadi</p>
+                <p className="font-bold text-primary-blue text-2xl">Rekening Pribadi</p>
               </div>
               <div className="list ml-12">
                 <ul>
@@ -144,34 +145,33 @@ const Home = () => {
             </div>
           </div>
 
-          <PrimaryButton text="Berikutnya" onClick={() => navigate(`login/${type}`)} classExtend="bg-primary w-[10%] hover:bg-secondary justify-self-center rounded-[50px]" />
+          <PrimaryButton text="Berikutnya" onClick={() => navigate(`login/${type}`)} classExtend="bg-primary-blue w-[10%] hover:bg-secondary-blue justify-self-center rounded-[50px]" />
 
         </div>
       )}
 
-      <div className="flex justify-between items-center">
-        <div className="text w-[50%]">
-          <h1 className="font-bold text-6xl">Senantiasa di<br /> Hati Anda</h1>
-
-          <p className="my-3.5">
+      <div className="w-full h-[40em] max-w-[1600px] mx-auto relative">
+        <img src={Banner} alt="" className="w-full h-full object-cover"/>
+        <div className="absolute right-10 w-[45em] top-1/2 -translate-y-1/2 py-2.5 px-5 rounded-lg bg-gray-400/40 backdrop-blur-2xl">
+          <h1 className="font-bold text-6xl text-primary-blue">Senantiasa di<br /> Hati Anda</h1>
+          <p className="my-3.5 text-white">
             Selama lebih dari enam dekade, BCA telah menjadi bagian dari perjalanan jutaan masyarakat Indonesia. Kami memahami bahwa kebutuhan setiap individu terus berkembang, dan karena itulah kami berkomitmen untuk terus berinovasi dalam menyediakan solusi perbankan yang aman, mudah, dan terpercaya.
             <br />
             <br />
             Dengan jaringan layanan yang luas, teknologi yang terus diperbarui, serta semangat pelayanan dari hati, kami hadir untuk memberikan pengalaman perbankan terbaik—mulai dari transaksi sehari-hari, perencanaan keuangan, hingga dukungan untuk masa depan Anda.
           </p>
-
-          <div className="button flex gap-4 items-center">
-            <button className="primary-button ease-anim" onClick={() => setPopUp(true)}>Masuk</button>
-            <a className="list-anim" style={{ "--color": "black" } as React.CSSProperties}>Pelajari Lebih Lanjut</a>
+          <div className="flex gap-6 items-center">
+          <PrimaryButton 
+            text="Masuk" 
+            classExtend="bg-primary-blue w-min mt-2 rounded-[5px] font-semibold hover:bg-secondary-blue px-10 py-3"
+            onClick={() => setPopUp(true)}
+          />
+          <button className="list-anim" style={{"--color":'black'} as React.CSSProperties}>Pelajari Lebih Lanjut</button>
           </div>
-        </div>
-
-        <div className="img h-[35%] w-[35%]">
-          <img src={HeroImg1} alt="" className="w-full h-full" />
         </div>
       </div>
 
-      <div className="flex justify-between mt-[8em]">
+      <div className="max-w-[1440px] mx-auto flex justify-between mt-[8em]">
         <div className="table h-[45%] w-[45%]">
           <RenderTable />
         </div>
@@ -188,7 +188,7 @@ const Home = () => {
 
           <div className="button flex gap-4 items-center">
             <button className="primary-button ease-anim">Mulai</button>
-            <a className="list-anim" style={{ "--color": "black" } as React.CSSProperties}>Pelajari Lebih Lanjut</a>
+            <SecondaryButton text="Pelajari Lebih Lanjut"/>
           </div>
         </div>
       </div>

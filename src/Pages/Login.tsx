@@ -1,10 +1,11 @@
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import PrimaryButton from '../Components/PrimaryButton'
 import HeroImg1 from "../assets/Hero-img-1.jpg"
 import { useState } from 'react'
 
 const Login = () => {
   let { type } = useParams()
+  const navigate = useNavigate()
 
   const [userId, setUserId] = useState('');
   const [pin, setPin] = useState('');
@@ -26,7 +27,7 @@ const Login = () => {
     setErrors(newErrors)
 
     if (Object.keys(newErrors).length === 0) {
-      console.log("Submit data:", { userId, pin })
+      navigate(`/${userId}/services/payment`)
     }
   }
 
@@ -66,7 +67,7 @@ const Login = () => {
 
           <PrimaryButton
             text='Masuk'
-            classExtend='bg-primary w-full mt-3 hover:bg-secondary'
+            classExtend='bg-primary-blue w-full mt-3 hover:bg-secondary-blue'
             onClick={handleSubmit}
           />
         </div>

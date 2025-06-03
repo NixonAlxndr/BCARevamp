@@ -18,7 +18,7 @@ const Footer = () => {
                 <div className="flex justify-between mt-4">
                     <div className="grid grid-cols-[repeat(3,auto)] gap-5">
                         <div className="kantor-pusat">
-                            <p>Kantor Pusat</p>
+                            <p className="font-semibold">Kantor Pusat</p>
                             <p className="mt-5">Menara BCA, Grand Indonesia</p>
                             <p className="mt-5">Jl.MH Thamrin No.1 Jakarta 10310</p>
                             <div className="phone flex gap-2 mt-5 items-center " >
@@ -27,7 +27,7 @@ const Footer = () => {
                             </div>
                         </div>
                         <div className="hubungi-kami">
-                            <p>Hubungi Kami</p>
+                            <p className="font-semibold">Hubungi Kami</p>
                             <div className="phone flex gap-2 mt-5 items-center">
                                 <span><MdLocalPhone /></span>
                                 <p className="list-anim" style={{ "--color": "white" } as React.CSSProperties}>Halo BCA 1500888</p>
@@ -42,7 +42,7 @@ const Footer = () => {
                             </div>
                         </div>
                         <div className="media-sosial">
-                            <p>Media Sosial</p>
+                            <p className="font-semibold">Media Sosial</p>
                             <div className="flex gap-8">
                                 <div>
                                     <div className="facebook flex mt-5 gap-2 items-center">
