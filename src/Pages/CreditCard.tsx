@@ -1,8 +1,5 @@
-import React from 'react'
 
-type Props = {}
-
-const CreditCard = (props: Props) => {
+const CreditCard = () => {
   return (
     <div>CreditCard</div>
   )

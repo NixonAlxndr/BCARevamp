@@ -1,8 +1,5 @@
-import React from 'react'
 
-type Props = {}
-
-const FundTransfer = (props: Props) => {
+const FundTransfer = () => {
   return (
     <div>FundTransfer</div>
   )

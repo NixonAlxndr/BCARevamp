@@ -1,8 +1,5 @@
-import React from 'react'
 
-type Props = {}
-
-const eStatement = (props: Props) => {
+const eStatement = () => {
   return (
     <div>eStatement</div>
   )

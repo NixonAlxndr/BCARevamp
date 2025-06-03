@@ -1,8 +1,5 @@
-import React from 'react'
 
-type Props = {}
-
-const TransactionStatus = (props: Props) => {
+const TransactionStatus = () => {
   return (
     <div>TransactionStatus</div>
   )

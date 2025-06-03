@@ -1,8 +1,5 @@
-import React from 'react'
 
-type Props = {}
-
-const AccountOpening = (props: Props) => {
+const AccountOpening = () => {
   return (
     <div>AccountOpening</div>
   )

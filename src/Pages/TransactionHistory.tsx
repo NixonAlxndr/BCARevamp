@@ -1,8 +1,5 @@
-import React from 'react'
 
-type Props = {}
-
-const TransactionHistory = (props: Props) => {
+const TransactionHistory = () => {
   return (
     <div>TransactionHistory</div>
   )
