@@ -18,7 +18,7 @@ export interface KursItem {
 export const kurs : KursItem[] = [
     {
         "nama" : "USD",
-        "gambar" : "../src/assets/Flag/usd.png",
+        "gambar" : "../src/assets/flag/usd.png",
         "e-rate" : {
             "beli" : 16.240,
             "jual" : 16.390
@@ -34,7 +34,7 @@ export const kurs : KursItem[] = [
     },
     {
         "nama" : "SGD",
-        "gambar" : "../src/assets/Flag/sgd.png",
+        "gambar" : "../src/assets/flag/sgd.png",
         "e-rate" : {
             "beli" : 12.568,
             "jual" : 12.702
@@ -50,7 +50,7 @@ export const kurs : KursItem[] = [
     },
     {
         "nama" : "EUR",
-        "gambar" : "../src/assets/Flag/eur.png",
+        "gambar" : "../src/assets/flag/eur.png",
         "e-rate" : {
             "beli" : 18.407,
             "jual" : 18.619
@@ -66,7 +66,7 @@ export const kurs : KursItem[] = [
     },
     {
         "nama" : "AUD",
-        "gambar" : "../src/assets/Flag/aud.png",
+        "gambar" : "../src/assets/flag/aud.png",
         "e-rate" : {
             "beli" : 10.429,
             "jual" : 10.555
@@ -82,7 +82,7 @@ export const kurs : KursItem[] = [
     },
     {
         "nama" : "DKK",
-        "gambar" : "../src/assets/Flag/dkk.png",
+        "gambar" : "../src/assets/flag/dkk.png",
         "e-rate" : {
             "beli" : 2.451,
             "jual" : 2.512
@@ -98,7 +98,7 @@ export const kurs : KursItem[] = [
     },
     {
         "nama" : "SEK",
-        "gambar" : "../src/assets/Flag/sek.png",
+        "gambar" : "../src/assets/flag/sek.png",
         "e-rate" : {
             "beli" : 1.674,
             "jual" : 1.727,
@@ -114,7 +114,7 @@ export const kurs : KursItem[] = [
     },
     {
         "nama" : "CAD",
-        "gambar" : "../src/assets/Flag/cad.png",
+        "gambar" : "../src/assets/flag/cad.png",
         "e-rate" : {
             "beli" : 11.812,
             "jual" : 11.933
@@ -130,7 +130,7 @@ export const kurs : KursItem[] = [
     },
     {
         "nama" : "CHF",
-        "gambar" : "../src/assets/Flag/chf.png",
+        "gambar" : "../src/assets/flag/chf.png",
         "e-rate" : {
             "beli" : 19.723,
             "jual" : 19.946,
@@ -146,7 +146,7 @@ export const kurs : KursItem[] = [
     },
     {
         "nama" : "NZD",
-        "gambar" : "../src/assets/Flag/nzd.png",
+        "gambar" : "../src/assets/flag/nzd.png",
         "e-rate" : {
             "beli" : 9.661,
             "jual" : 9.787
@@ -162,7 +162,7 @@ export const kurs : KursItem[] = [
     },
     {
         "nama" : "GBP",
-        "gambar" : "../src/assets/Flag/gbp.png",
+        "gambar" : "../src/assets/flag/gbp.png",
         "e-rate" : {
             "beli" : 21.847,
             "jual" : 22.072
