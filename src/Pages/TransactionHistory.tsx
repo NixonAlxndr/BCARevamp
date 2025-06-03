@@ -7,14 +7,12 @@ import {
   PopoverContent, 
   PopoverTrigger 
 } from "@radix-ui/react-popover" 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/Components/ui/button"
 import type { SelectSingleEventHandler } from "react-day-picker"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu"
 
