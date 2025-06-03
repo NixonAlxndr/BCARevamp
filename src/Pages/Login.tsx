@@ -33,8 +33,8 @@ const Login = () => {
 
   return (
     <div className='max-w-[1440px] mx-auto'>
-      <div className="inner flex my-[5em] justify-between items-center">
-        <div className="authentication w-[40%]">
+      <div className="inner flex mt-[8em] shadow-[0_0_18px_1px_rgba(0,0,0,.25)] mb-10 w-[800px] items-center overflow-hidden border-black border-[0px] gap-4 rounded-lg">
+        <div className="authentication w-[25em] py-4 px-3">
           <p className="text-3xl font-bold mb-3 text-center">
             {type}
           </p>
@@ -72,7 +72,7 @@ const Login = () => {
           />
         </div>
 
-        <div className="img w-[35%] h-[35%]">
+        <div className="img h-[350px]">
           <img src={HeroImg1} alt="" className='w-full h-full' />
         </div>
       </div>

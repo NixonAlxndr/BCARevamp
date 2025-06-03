@@ -7,7 +7,7 @@ const Navbar = () => {
     let navigate = useNavigate()
 
     return (
-        <div className="navbar border-b-2 border-black">
+        <div className="navbar shadow-2xl fixed z-20 right-0 left-0 bg-white">
             <div className="inner-navbar max-w-[1440px] mx-auto flex items-center justify-between">
                 <div className="img h-18 w-24 cursor-pointer" onClick={() => navigate("/")}>
                     <img src={LogoBCA} className="w-full h-full" alt="" />

@@ -228,15 +228,7 @@ const LoggedIn = () => {
 
           </OptionButton>
 
-          <OptionButton
-            id="Home"
-            text="Home"
-            activeButtonId={active}
-            onClick={() => {
-              navigate("/")
-              SetActive("Home")
-            }}
-            classExtend="text-white py-2 px-3 flex" />
+          
         </div>
 
         <div>

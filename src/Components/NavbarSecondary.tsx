@@ -17,7 +17,7 @@ const NavbarSecondary = () => {
     return (
         <div className="navbar border-b-2 border-black">
             <div className="inner-navbar max-w-[1440px] mx-auto flex items-center justify-between">
-                <div className="img h-15 w-20" onClick={() => navigate("/")}>
+                <div className="img h-18 w-24" onClick={() => navigate("/")}>
                     <img src={LogoBCA} className="w-full h-full cursor-pointer" alt="" />
                 </div>
 
