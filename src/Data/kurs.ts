@@ -18,7 +18,7 @@ export interface KursItem {
 export const kurs : KursItem[] = [
     {
         "nama" : "USD",
-        "gambar" : "../src/assets/flag/usd.png",
+        "gambar" : "../src/assets/Flag/usd.png",
         "e-rate" : {
             "beli" : 16.240,
             "jual" : 16.390
