@@ -2,11 +2,11 @@ import PrimaryButton from "@/Components/PrimaryButton"
 import RadioButton from "@/Components/RadioButton"
 import { Calendar } from "@/Components/ui/calendar"
 import { useState } from "react"
-import { 
-  Popover, 
-  PopoverContent, 
-  PopoverTrigger 
-} from "@radix-ui/react-popover" 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from "@radix-ui/react-popover"
 import { Button } from "@/Components/ui/button"
 import type { SelectSingleEventHandler } from "react-day-picker"
 import {
@@ -17,20 +17,21 @@ import {
 } from "@/Components/ui/dropdown-menu"
 
 const TransactionHistory = () => {
-  const transactionOption : Record<number, string> = {
-    1 : "Transfer ke akun BCA",
-    2 : "Transfer ke akun bank BCA domestik",
-    3 : "Transfer ke akun BCA virtual",
-    4 : "Transfer ke Sakuku",
-    5 : "Pembayaran",
-    6 : "Pembayaran e-Commerce",
-    7 : "Struk penarikan dana",
-    8 : "Pengiriman uang keluar",
+  const transactionOption: Record<number, string> = {
+    1: "Transfer ke akun BCA",
+    2: "Transfer ke akun bank BCA domestik",
+    3: "Transfer ke akun BCA virtual",
+    4: "Transfer ke Sakuku",
+    5: "Pembayaran",
+    6: "Pembayaran e-Commerce",
+    7: "Struk penarikan dana",
+    8: "Pengiriman uang keluar",
   }
 
-  const [ transactionType, setTransactionType ] = useState<number>(1);
+  const [transactionType, setTransactionType] = useState<number>(1);
   const [transaction, SetTransaction] = useState<"Typed" | "All">("All")
   const [dateNow, SetDateNow] = useState<Date>(new Date())
+  const [dateLater, SetDateLater] = useState<Date>(new Date())
 
   return (
     <div className="py-3 w-[50%] mx-auto">
@@ -41,11 +42,11 @@ const TransactionHistory = () => {
         <div>
           <p className="text-sm">Dari:</p>
           <Popover>
-            <PopoverTrigger asChild>
-              <Button variant={"outline"} className="bg-transparent font-normal text-black hover:bg-gray-200">{dateNow ? dateNow.toLocaleDateString("id-ID", {day: "numeric", month: "long", year: "numeric"}) : "Pilih tanggal"}</Button>
+            <PopoverTrigger>
+              <Button variant={"outline"} className="bg-transparent font-normal text-black hover:bg-gray-200">{dateNow ? dateNow.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) : "Pilih tanggal"}</Button>
             </PopoverTrigger>
-            <PopoverContent className="z-20">
-              <Calendar mode="single" selected={dateNow} onSelect={SetDateNow as SelectSingleEventHandler} className="bg-white border-gray-200 border-2 rounded-lg"/>
+            <PopoverContent className="z-20 mt-2">
+              <Calendar disabled={date => date > new Date() || date < new Date("1900-01-01")} mode="single" selected={dateNow} onSelect={SetDateNow as SelectSingleEventHandler} className="bg-white border-gray-200 border-2 rounded-lg" />
             </PopoverContent>
           </Popover>
         </div>
@@ -53,11 +54,11 @@ const TransactionHistory = () => {
         <div>
           <p className="text-sm">Sampai:</p>
           <Popover>
-            <PopoverTrigger asChild>
-              <Button variant={"outline"} className="bg-transparent font-normal text-black hover:bg-gray-200">{dateNow ? dateNow.toLocaleDateString("id-ID", {day: "numeric", month: "long", year: "numeric"}) : "Pilih tanggal"}</Button>
+            <PopoverTrigger>
+              <Button variant={"outline"} className="bg-transparent font-normal text-black hover:bg-gray-200">{dateLater ? dateLater.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) : "Pilih tanggal"}</Button>
             </PopoverTrigger>
-            <PopoverContent className="z-20">
-              <Calendar mode="single" selected={dateNow} onSelect={SetDateNow as SelectSingleEventHandler} className="bg-white border-gray-200 border-2 rounded-lg"/>
+            <PopoverContent className="z-20 mt-2">
+              <Calendar disabled={date => date > new Date() || date < new Date("1900-01-01")} mode="single" selected={dateLater} onSelect={SetDateLater as SelectSingleEventHandler} className="bg-white border-gray-200 border-2 rounded-lg" />
             </PopoverContent>
           </Popover>
         </div>
@@ -71,7 +72,7 @@ const TransactionHistory = () => {
 
         <div className="typed flex gap-24">
           <RadioButton text="Tipe Transaksi" id="Typed" state={transaction} onClick={() => SetTransaction("Typed")} />
-          
+
           <DropdownMenu>
             <DropdownMenuTrigger disabled={transaction === "All"}>
               <Button disabled={transaction === "All"} className="font-normal" variant={"outline"}>{transactionOption[transactionType]}</Button>
