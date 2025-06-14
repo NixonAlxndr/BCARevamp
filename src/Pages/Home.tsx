@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
-import { useNavigate } from "react-router"
+import { useNavigate, useOutletContext } from "react-router"
 import { kurs } from "../Data/kurs.ts"
 import PrimaryButton from "../Components/PrimaryButton.tsx"
 import SecondaryButton from "@/Components/SecondaryButton.tsx"
 import Banner from "../assets/Banner.png"
+import type { LayoutContextType } from "@/Layout/DefaultLayout.tsx"
 
 const RenderTable = () => {
   return (
@@ -54,10 +55,15 @@ const RenderTable = () => {
 }
 
 const Home = () => {
-  const [popUp, setPopUp] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const {
+    popUp,
+    setPopUp,
+    isVisible,
+    setIsVisible,
+    type,
+    setType,
+  } = useOutletContext<LayoutContextType>();
   const popupRef = useRef<HTMLDivElement>(null);
-  const [type, setType] = useState<"Individual" | "Bisnis" | null>("Bisnis");
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -150,9 +156,9 @@ const Home = () => {
         </div>
       )}
 
-      <div className="w-full h-[40em] max-w-[1600px] mx-auto relative">
-        <img src={Banner} alt="" className="w-full h-full object-cover"/>
-        <div className="absolute right-10 w-[45em] top-1/2 -translate-y-1/2 py-2.5 px-5 rounded-lg bg-gray-400/40 backdrop-blur-2xl">
+      <div className="w-full h-[40em] py- max-w-[1600px] mx-auto relative">
+        <img src={Banner} alt="" className="w-full h-full object-cover" />
+        <div className="absolute right-10 w-[45em] top-1/2 -translate-y-1/2 py-5 px-5 rounded-lg bg-gray-400/40 backdrop-blur-2xl">
           <h1 className="font-bold text-6xl text-primary-blue">Senantiasa di<br /> Hati Anda</h1>
           <p className="my-3.5 text-white text-shadow-lg/20">
             Selama lebih dari enam dekade, BCA telah menjadi bagian dari perjalanan jutaan masyarakat Indonesia. Kami memahami bahwa kebutuhan setiap individu terus berkembang, dan karena itulah kami berkomitmen untuk terus berinovasi dalam menyediakan solusi perbankan yang aman, mudah, dan terpercaya.
@@ -161,12 +167,7 @@ const Home = () => {
             Dengan jaringan layanan yang luas, teknologi yang terus diperbarui, serta semangat pelayanan dari hati, kami hadir untuk memberikan pengalaman perbankan terbaik—mulai dari transaksi sehari-hari, perencanaan keuangan, hingga dukungan untuk masa depan Anda.
           </p>
           <div className="flex gap-6 items-center">
-          <PrimaryButton 
-            text="Masuk" 
-            classExtend="bg-primary-blue w-min mt-2 rounded-[5px] font-semibold hover:bg-secondary-blue px-10 py-3"
-            onClick={() => setPopUp(true)}
-          />
-          <button className="list-anim text-white" style={{"--color":'white'} as React.CSSProperties}>Pelajari Lebih Lanjut</button>
+            <button className="border-[1px] border-white rounded-[5px] py-2 px-3 text-white cursor-pointer">Pelajari Lebih Lanjut</button>
           </div>
         </div>
       </div>
@@ -187,8 +188,7 @@ const Home = () => {
           </p>
 
           <div className="button flex gap-4 items-center">
-            <button className="primary-button ease-anim">Mulai</button>
-            <SecondaryButton text="Pelajari Lebih Lanjut"/>
+            <SecondaryButton text="Pelajari Lebih Lanjut" />
           </div>
         </div>
       </div>

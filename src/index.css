@@ -11,7 +11,13 @@
     --color-secondary-blue: #0066AE;
     --color-primary-black: #031120;
     --color-overlay: rgba(255, 255, 255, 0.2)
+}
 
+/* React Day Picker */
+.rdp-root {
+    --rdp-selected-border: var(--color-primary-blue);
+    --rdp-range_start-background: var(--color-primary-blue);
+    --rdp-range_end-background: var(--color-primary-blue);
 }
 
 /* List Animation */

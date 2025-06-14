@@ -1,14 +1,10 @@
 import OptionButton from "@/Components/OptionButton"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Outlet, useNavigate } from "react-router"
 
 const LoggedIn = () => {
   const navigate = useNavigate();
   const [active, SetActive] = useState<string>();
-
-  useEffect(() => {
-    console.log
-  }, [active])
 
   return (
     <>
@@ -24,51 +20,6 @@ const LoggedIn = () => {
               SetActive("Payment")
             }}
             dropDown
-          >
-
-            <OptionButton
-              id="RechargeVoucher"
-              activeButtonId={active}
-              onClick={() => SetActive("RechargeVoucher")}
-              text="Recharge Voucher"
-              classExtend="text-white py-2 px-3"
-            />
-
-            <OptionButton
-              id="PLNPrabayar"
-              activeButtonId={active}
-              onClick={() => SetActive("PLNPrabayar")}
-              text="PLN Prabayar"
-              classExtend="text-white py-2 px-3 "
-            />
-
-            <OptionButton
-              id="PLNManual"
-              activeButtonId={active}
-              onClick={() => SetActive("PLNManual")}
-              text="PLN Prabayar Manual Advice"
-              classExtend="text-white py-2 px-3 "
-            />
-
-            <OptionButton
-              id="Ticket"
-              activeButtonId={active}
-              onClick={() => SetActive("Ticket")}
-              text="Ticket"
-              classExtend="text-white py-2 px-3 "
-            />
-
-          </OptionButton>
-
-          <OptionButton
-            id="e-Commerce"
-            activeButtonId={active}
-            text="e-Commerce"
-            classExtend="text-white py-2 px-3 "
-            onClick={() => {
-              navigate("eCommerce")
-              SetActive("e-Commerce")
-            }}
           >
           </OptionButton>
 
@@ -134,7 +85,6 @@ const LoggedIn = () => {
             }}
             dropDown
           >
-            <OptionButton id="Test" activeButtonId={active} onClick={() => SetActive('Test')} text="test" classExtend="text-white py-2 px-3"/>
           </OptionButton>
 
           <OptionButton

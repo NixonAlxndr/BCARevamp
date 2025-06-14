@@ -22,6 +22,7 @@ import TransactionHistory from "./Pages/TransactionHistory";
 import Administration from "./Pages/Administration";
 import eMail from "./Pages/eMail";
 
+
 let router = createBrowserRouter([
   {
     path: "/",
@@ -30,7 +31,8 @@ let router = createBrowserRouter([
       {
         index: true,
         Component: Home
-      },{
+      },
+      {
         path: "login/:type",
         Component: Login
       }

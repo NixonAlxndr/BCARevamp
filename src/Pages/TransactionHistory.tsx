@@ -8,7 +8,7 @@ import {
   PopoverTrigger
 } from "@radix-ui/react-popover"
 import { Button } from "@/Components/ui/button"
-import type { SelectSingleEventHandler } from "react-day-picker"
+import type { DateRange, SelectRangeEventHandler, SelectSingleEventHandler } from "react-day-picker"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,39 +30,63 @@ const TransactionHistory = () => {
 
   const [transactionType, setTransactionType] = useState<number>(1);
   const [transaction, SetTransaction] = useState<"Typed" | "All">("All")
-  const [dateNow, SetDateNow] = useState<Date>(new Date())
-  const [dateLater, SetDateLater] = useState<Date>(new Date())
+  const [dateNow, SetDateNow] = useState<Date | undefined>(undefined)
+  const [dateLater, SetDateLater] = useState<Date | undefined>(undefined)
+
+  const matcher: DateRange = {
+    from: dateNow,
+    to: dateLater
+  };
 
   return (
     <div className="py-3 w-[50%] mx-auto">
       <p className="text-6xl font-semibold text-secondary-blue">Transaction History</p>
       <p className="mt-2">Pilih periode yang anda inginkan untuk melihat transaksi BCA Anda</p>
 
-      <div className="periode mt-5 flex gap-24">
-        <div>
-          <p className="text-sm">Dari:</p>
-          <Popover>
-            <PopoverTrigger>
-              <Button variant={"outline"} className="bg-transparent font-normal text-black hover:bg-gray-200">{dateNow ? dateNow.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) : "Pilih tanggal"}</Button>
-            </PopoverTrigger>
-            <PopoverContent className="z-20 mt-2">
-              <Calendar disabled={date => date > new Date() || date < new Date("1900-01-01")} mode="single" selected={dateNow} onSelect={SetDateNow as SelectSingleEventHandler} className="bg-white border-gray-200 border-2 rounded-lg" />
-            </PopoverContent>
-          </Popover>
+      <div className="periode mt-5 flex gap-5">
+        <div className="flex flex-col gap-5">
+          <div>
+            <p className="text-sm">Dari:</p>
+            <Popover>
+              <PopoverTrigger>
+                <Button variant={"outline"} className="bg-transparent font-normal text-black hover:bg-gray-200">{dateNow ? dateNow.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) : "Pilih tanggal"}</Button>
+              </PopoverTrigger>
+              <PopoverContent className="z-20 mt-2">
+                <Calendar 
+                  disabled={date => date > new Date() || date < new Date("1900-01-01")} 
+                  mode="single" selected={dateNow} 
+                  onSelect={SetDateNow as SelectSingleEventHandler} 
+                  className="bg-white border-gray-200 border-2 rounded-lg" />
+              </PopoverContent>
+            </Popover>
+          </div>
+
+          <div>
+            <p className="text-sm">Sampai:</p>
+            <Popover>
+              <PopoverTrigger>
+                <Button variant={"outline"} className="bg-transparent font-normal text-black hover:bg-gray-200">{dateLater ? dateLater.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) : "Pilih tanggal"}</Button>
+              </PopoverTrigger>
+              <PopoverContent className="z-20 mt-2">
+                <Calendar 
+                  disabled={date => date > new Date() || date < new Date("1900-01-01")} 
+                  mode="single" selected={dateLater} 
+                  onSelect={SetDateLater as SelectSingleEventHandler} 
+                  className="bg-white border-gray-200 border-2 rounded-lg" />
+              </PopoverContent>
+            </Popover>
+          </div>
         </div>
 
-        <div>
-          <p className="text-sm">Sampai:</p>
-          <Popover>
-            <PopoverTrigger>
-              <Button variant={"outline"} className="bg-transparent font-normal text-black hover:bg-gray-200">{dateLater ? dateLater.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) : "Pilih tanggal"}</Button>
-            </PopoverTrigger>
-            <PopoverContent className="z-20 mt-2">
-              <Calendar disabled={date => date > new Date() || date < new Date("1900-01-01")} mode="single" selected={dateLater} onSelect={SetDateLater as SelectSingleEventHandler} className="bg-white border-gray-200 border-2 rounded-lg" />
-            </PopoverContent>
-          </Popover>
+        <div className="calendar w-fit">
+          <Calendar 
+            disabled={date => date > new Date() || date < new Date("1900-01-01")} 
+            mode="range" selected={matcher} 
+            className="bg-white border-gray-200 border-2 rounded-lg" 
+            classNames={{day_today: "bg-transparent"}}/>
         </div>
       </div>
+
 
       <div className="transaction mt-5">
         <p className="mt-2">Pilih tipe transaksi apa yang ingin anda lihat</p>

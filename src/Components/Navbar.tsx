@@ -3,7 +3,11 @@ import LogoBCA from "../assets/Logo-BCA.png"
 import { IoMdSearch } from "react-icons/io";
 import PrimaryButton from "./PrimaryButton";
 
-const Navbar = () => {
+type NavbarProp = {
+    setPopUp : (arg0: boolean) => void
+}
+
+const Navbar = ({setPopUp} : NavbarProp) => {
     let navigate = useNavigate()
 
     return (
@@ -29,7 +33,11 @@ const Navbar = () => {
                         <input type="text" placeholder="Perlu Bantuan?" className="outline-0"/>
                     </div>
 
-                    <PrimaryButton text="Unduh" classExtend="bg-primary-blue rounded-[5px] font-semibold hover:bg-secondary-blue px-4"/>
+                    <PrimaryButton 
+                        onClick={() => setPopUp(true)}
+                        text="Masuk" 
+                        classExtend="bg-primary-blue rounded-[5px] font-semibold hover:bg-secondary-blue px-4"
+                    />
                 </div>
             </div>
         </div>

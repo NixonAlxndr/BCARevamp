@@ -6,6 +6,8 @@ import { LiaInstagram } from "react-icons/lia";
 import { BsTwitterX } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { IoArrowForward } from "react-icons/io5";
+import AppStoreBtn from "../assets/AppStore_Button.png"
+import GooglePlayBtn from "../assets/GooglePlay_Button.png"
 
 const Footer = () => {
     return (
@@ -74,6 +76,15 @@ const Footer = () => {
                             <IoArrowForward />
                         </div>
                         <p className="text-sm">This site is protected by reCAPTCHA and the Google <u>Privacy Policy</u> and <u>Terms of Service</u> apply.</p>
+                        <p className="mt-5">Unduh aplikasi di sini:</p>
+                        <div className="flex gap-3 mt-3">
+                            <div className="img w-[10em] h-[3em]">
+                                <img src={AppStoreBtn} alt="" className="w-full h-full"/>
+                            </div>
+                            <div className="img w-[10em] h-[3em]">
+                                <img src={GooglePlayBtn} alt=""  className="w-full h-full"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
