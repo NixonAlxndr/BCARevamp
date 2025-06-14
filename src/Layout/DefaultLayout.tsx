@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 export type LayoutContextType = {
   popUp: boolean;
