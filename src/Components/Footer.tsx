@@ -32,7 +32,7 @@ const Footer = () => {
                             <p className="font-semibold">Hubungi Kami</p>
                             <div className="phone flex gap-2 mt-5 items-center">
                                 <span><MdLocalPhone /></span>
-                                <p className="list-anim" style={{ "--color": "white" } as React.CSSProperties}>Halo BCA 1500888</p>
+                                <a href="tel:1500888" className="list-anim" style={{ "--color": "white" } as React.CSSProperties}>Halo BCA 1500888</a>
                             </div>
                             <div className="email flex gap-2 mt-5 items-center">
                                 <span><MdOutlineEmail /></span>
@@ -40,7 +40,7 @@ const Footer = () => {
                             </div>
                             <div className="whatsapp flex gap-2 mt-5 items-center">
                                 <span><PiWhatsappLogoLight /></span>
-                                <p className="list-anim" style={{ "--color": "white" } as React.CSSProperties}>62 811 1500 998</p>
+                                <a href="https://wa.me/628111500998?text=%23HaloBCA" className="list-anim" style={{ "--color": "white" } as React.CSSProperties}>62 811 1500 998</a>
                             </div>
                         </div>
                         <div className="media-sosial">
@@ -49,21 +49,21 @@ const Footer = () => {
                                 <div>
                                     <div className="facebook flex mt-5 gap-2 items-center">
                                         <span><FaFacebook /></span>
-                                        <p className="list-anim" style={{ "--color": "white" } as React.CSSProperties}>GoodLife BCA</p>
+                                        <a href="http://www.facebook.com/GoodLifeBCA" className="list-anim" style={{ "--color": "white" } as React.CSSProperties}>GoodLife BCA</a>
                                     </div>
                                     <div className="instagram flex mt-5 gap-2 items-center">
                                         <span><LiaInstagram /></span>
-                                        <p className="list-anim" style={{ "--color": "white" } as React.CSSProperties}>@goodlifebca</p>
+                                        <a href="https://www.instagram.com/goodlifeBCA/" className="list-anim" style={{ "--color": "white" } as React.CSSProperties}>@goodlifebca</a>
                                     </div>
                                 </div>
                                 <div>
                                     <div className="youtube flex gap-2 mt-5 items-center">
                                         <span><FaYoutube /></span>
-                                        <p className="list-anim" style={{ "--color": "white" } as React.CSSProperties}>Solusi BCA</p>
+                                        <a href="http://www.youtube.com/solusiBCA" className="list-anim" style={{ "--color": "white" } as React.CSSProperties}>Solusi BCA</a>
                                     </div>
                                     <div className="X flex gap-2 mt-5 items-center">
                                         <span><BsTwitterX /></span>
-                                        <p className="list-anim" style={{ "--color": "white" } as React.CSSProperties}>@BankBCA</p>
+                                        <a href="https://twitter.com/BankBCA" className="list-anim" style={{ "--color": "white" } as React.CSSProperties}>@BankBCA</a>
                                     </div>
                                 </div>
                             </div>

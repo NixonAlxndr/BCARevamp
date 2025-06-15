@@ -1,7 +1,8 @@
 import { useNavigate, useParams } from 'react-router'
 import PrimaryButton from '../Components/PrimaryButton'
-import HeroImg1 from "../assets/Hero-img-1.jpg"
+import HeroImg1 from "../assets/Hero-img-1.png"
 import { useState } from 'react'
+import SecondaryButton from '@/Components/SecondaryButton'
 
 const Login = () => {
   let { type } = useParams()
@@ -64,12 +65,22 @@ const Login = () => {
               <p className="text-red-500 text-sm mt-1">{errors.pin}</p>
             )}
           </div>
+          
+          <div className='flex gap-5'>
+            <PrimaryButton
+              text='Masuk'
+              classExtend='bg-primary-blue flex-1 hover:bg-secondary-blue'
+              onClick={handleSubmit}
+            />
+            <SecondaryButton 
+              text='Kembali'
+              classExtend='flex-1'
+            />
+          </div>
 
-          <PrimaryButton
-            text='Masuk'
-            classExtend='bg-primary-blue w-full mt-3 hover:bg-secondary-blue'
-            onClick={handleSubmit}
-          />
+          <div className="notes mt-3.5">
+            <p className="text-red-500 text-xs"><b>Note: </b>USER ID dan PIN Internet Banking dapat diperoleh pada saat Anda melakukan Registrasi Internet melalui ATM BCA. Untuk informasi lebih lanjut hubungi Halo BCA 1500888.</p>
+          </div>
         </div>
 
         <div className="img h-[350px]">

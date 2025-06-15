@@ -30,8 +30,8 @@ const TransactionHistory = () => {
 
   const [transactionType, setTransactionType] = useState<number>(1);
   const [transaction, SetTransaction] = useState<"Typed" | "All">("All")
-  const [dateNow, SetDateNow] = useState<Date | undefined>(undefined)
-  const [dateLater, SetDateLater] = useState<Date | undefined>(undefined)
+  const [dateNow, SetDateNow] = useState<Date | undefined>(new Date())
+  const [dateLater, SetDateLater] = useState<Date | undefined>(new Date())
 
   const matcher: DateRange = {
     from: dateNow,
@@ -46,7 +46,7 @@ const TransactionHistory = () => {
       <div className="periode mt-5 flex gap-5">
         <div className="flex flex-col gap-5">
           <div>
-            <p className="text-sm">Dari:</p>
+            <p className="text-sm font-bold">Dari:</p>
             <Popover>
               <PopoverTrigger>
                 <Button variant={"outline"} className="bg-transparent font-normal text-black hover:bg-gray-200">{dateNow ? dateNow.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) : "Pilih tanggal"}</Button>
@@ -62,7 +62,7 @@ const TransactionHistory = () => {
           </div>
 
           <div>
-            <p className="text-sm">Sampai:</p>
+            <p className="text-sm font-bold">Sampai:</p>
             <Popover>
               <PopoverTrigger>
                 <Button variant={"outline"} className="bg-transparent font-normal text-black hover:bg-gray-200">{dateLater ? dateLater.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) : "Pilih tanggal"}</Button>

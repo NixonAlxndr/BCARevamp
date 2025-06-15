@@ -5,9 +5,9 @@ type Props = {
 
 const SecondaryButton = ({ text, classExtend }: Props) => {
   return (
-    <div className={`cursor-pointer inline-block text-gray-600 ${classExtend}`}>
+    <div className={`cursor-pointer inline-block content-center text-gray-500 border-[1px] rounded-[5px] px-4 py-2 ${classExtend}`}>
       <p
-        className="secondary-button bg-clip-text relative px-2 py-1 transition-all duration-500 bg-[length:200%_100%]"
+        className="relative text-center align-center"
       >
         {text}
       </p>

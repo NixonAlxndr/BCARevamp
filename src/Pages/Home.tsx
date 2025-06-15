@@ -158,16 +158,20 @@ const Home = () => {
 
       <div className="w-full h-[40em] py- max-w-[1600px] mx-auto relative">
         <img src={Banner} alt="" className="w-full h-full object-cover" />
-        <div className="absolute right-10 w-[45em] top-1/2 -translate-y-1/2 py-5 px-5 rounded-lg bg-gray-400/40 backdrop-blur-2xl">
-          <h1 className="font-bold text-6xl text-primary-blue">Senantiasa di<br /> Hati Anda</h1>
-          <p className="my-3.5 text-white text-shadow-lg/20">
+        <div className="absolute left-10 w-[45em] top-1/2 -translate-y-1/2 py-5 px-5 rounded-lg bg-gray-400/40 backdrop-blur-2xl">
+          <h1 className="font-bold text-6xl text-white">Senantiasa di<br /> Hati Anda</h1>
+          <p className="my-3.5 text-white">
             Selama lebih dari enam dekade, BCA telah menjadi bagian dari perjalanan jutaan masyarakat Indonesia. Kami memahami bahwa kebutuhan setiap individu terus berkembang, dan karena itulah kami berkomitmen untuk terus berinovasi dalam menyediakan solusi perbankan yang aman, mudah, dan terpercaya.
             <br />
             <br />
             Dengan jaringan layanan yang luas, teknologi yang terus diperbarui, serta semangat pelayanan dari hati, kami hadir untuk memberikan pengalaman perbankan terbaik—mulai dari transaksi sehari-hari, perencanaan keuangan, hingga dukungan untuk masa depan Anda.
           </p>
           <div className="flex gap-6 items-center">
-            <button className="border-[1px] border-white rounded-[5px] py-2 px-3 text-white cursor-pointer">Pelajari Lebih Lanjut</button>
+            <PrimaryButton
+              onClick={() => setPopUp(true)}
+              text="Masuk"
+              classExtend="bg-primary-blue rounded-[5px] font-semibold hover:bg-secondary-blue px-8"
+            />
           </div>
         </div>
       </div>
@@ -188,7 +192,7 @@ const Home = () => {
           </p>
 
           <div className="button flex gap-4 items-center">
-            <SecondaryButton text="Pelajari Lebih Lanjut" />
+            <SecondaryButton text="Kalkulator eRate" />
           </div>
         </div>
       </div>

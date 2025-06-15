@@ -46,7 +46,7 @@ const NavbarSecondary = () => {
                         <input type="text" placeholder="Perlu Bantuan?" className="outline-0" />
                     </div>
 
-                    <PrimaryButton text="Keluar" classExtend="bg-primary-blue rounded-[5px] font-semibold hover:bg-secondary-blue px-4"/>
+                    <PrimaryButton text="Keluar" onClick={() => navigate("/")} classExtend="bg-primary-blue rounded-[5px] font-semibold hover:bg-secondary-blue px-4"/>
                 </div>
             </div>
         </div>
