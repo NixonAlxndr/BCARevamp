@@ -1,8 +1,6 @@
 import { useNavigate } from 'react-router'
 
-type Props = {}
-
-const DummyPage = (props: Props) => {
+const DummyPage = () => {
     let navigate = useNavigate()
     console.log(navigate)
 
