@@ -72,7 +72,8 @@ const Login = () => {
               classExtend='bg-primary-blue flex-1 hover:bg-secondary-blue'
               onClick={handleSubmit}
             />
-            <SecondaryButton 
+            <SecondaryButton
+              onClick = {() => navigate("/")}
               text='Kembali'
               classExtend='flex-1'
             />
