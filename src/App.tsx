@@ -21,6 +21,7 @@ import TransactionStatus from "./Pages/TransactionStatus";
 import TransactionHistory from "./Pages/TransactionHistory";
 import Administration from "./Pages/Administration";
 import eMail from "./Pages/eMail";
+import DummyPage from "./Pages/DummyPage";
 
 
 let router = createBrowserRouter([
@@ -105,6 +106,10 @@ let router = createBrowserRouter([
         ]
       },
     ]
+  },
+  {
+    path: "*",
+    Component: DummyPage
   }
 ]);
 

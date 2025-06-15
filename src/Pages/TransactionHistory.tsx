@@ -15,8 +15,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu"
+import { useNavigate } from "react-router"
 
 const TransactionHistory = () => {
+  let navigate = useNavigate()
   const transactionOption: Record<number, string> = {
     1: "Transfer ke akun BCA",
     2: "Transfer ke akun bank BCA domestik",
@@ -53,8 +55,9 @@ const TransactionHistory = () => {
               </PopoverTrigger>
               <PopoverContent className="z-20 mt-2">
                 <Calendar 
-                  disabled={date => date > new Date() || date < new Date("1900-01-01")} 
-                  mode="single" selected={dateNow} 
+                  disabled={{ before: new Date(new Date().setDate(new Date().getDate() - 31)), after: new Date() }} 
+                  mode="single" 
+                  selected={dateNow}
                   onSelect={SetDateNow as SelectSingleEventHandler} 
                   className="bg-white border-gray-200 border-2 rounded-lg" />
               </PopoverContent>
@@ -69,8 +72,9 @@ const TransactionHistory = () => {
               </PopoverTrigger>
               <PopoverContent className="z-20 mt-2">
                 <Calendar 
-                  disabled={date => date > new Date() || date < new Date("1900-01-01")} 
-                  mode="single" selected={dateLater} 
+                  disabled={{ before: new Date(new Date().setDate(new Date().getDate() - 31)), after: new Date() }} 
+                  mode="single" 
+                  selected={dateLater} 
                   onSelect={SetDateLater as SelectSingleEventHandler} 
                   className="bg-white border-gray-200 border-2 rounded-lg" />
               </PopoverContent>
@@ -80,8 +84,9 @@ const TransactionHistory = () => {
 
         <div className="calendar w-fit">
           <Calendar 
-            disabled={date => date > new Date() || date < new Date("1900-01-01")} 
-            mode="range" selected={matcher} 
+            disabled={{ before: new Date(new Date().setDate(new Date().getDate() - 31)), after: new Date() }} 
+            mode="range" 
+            selected={matcher} 
             className="bg-white border-gray-200 border-2 rounded-lg" 
             classNames={{day_today: "bg-transparent"}}/>
         </div>
@@ -116,11 +121,11 @@ const TransactionHistory = () => {
       </div>
 
       <div className="warning mt-4">
-        <p className="text-red-500"><b>Note:</b> Semua transaksi hanya bisa dilihat dalam jangka waktu 31 hari kebelakang</p>
+        <p className="text-red-500"><b>Note:</b> Riwayat transaksi yang tersimpan hanya selama 31 hari terakhir</p>
       </div>
 
       <div className="submit-button">
-        <PrimaryButton text="Lihat" classExtend="bg-primary-blue w-min px-8 mt-6 hover:bg-secondary-blue justify-self-end" />
+        <PrimaryButton text="Lihat" onClick={() => navigate("history")} classExtend="bg-primary-blue w-min px-8 mt-6 hover:bg-secondary-blue justify-self-end" />
       </div>
     </div>
   )
